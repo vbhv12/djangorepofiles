@@ -1,0 +1,120 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}  
+
+
+<html>
+    <head>
+        <title>Events Information</title>
+    </head>
+    <body>
+        <div class="row mx-5 my-5">
+            <div class="col-md mx-3">
+                <div class="card card-body">
+                    <h5>Add new event here</h5>
+                    <hr>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createevent' %}" style="margin-top: 14px; font-weight: 200 ; height: 35px;">Create Event</a>
+            
+                    <div>
+                        <h6></h6>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md">
+                <div class="card card-body">
+                    <h5>Number of upcomming events </h5>
+                    <hr>
+                    <h4 style="text-align: center;padding: 10px">{{upcomming}}</h4>
+                   
+                </div>
+            </div>
+            
+            <div class="col-md">
+                <div class="card card-body">
+                    <h5>Number of events completed</h5>
+                    <hr>
+                    <h4 style="text-align: center;padding: 10px">{{complete}}</h4>
+                  
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="row">
+            <div class="col-md mx-5 my-5">
+                <div class="card card-body">
+                    <table class="table">
+                        <h3 style="text-align: center; font-style: italic;">Upcoming Events</h3>
+                        <tr style="background-color: rgb(138, 138, 138);">
+                            <th>Events Id</th>
+                            <th>Organizer</th>
+                            <th>Tag</th>
+                            <th>Event Date & Time</th>
+                            <th>Event Purpose</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                       
+                        {% for i in form  %}
+                        {% if i.option2 %}
+                         <tr>
+                            <th>{{i.event_id}}</th>
+                            <th>{{i.organizer}}</th>
+                            <th>{{i.tag}}</th>
+                            <th>{{i.event_date_time}}</th>
+                            <th>{{i.event_purpose}}</th>
+                            <th><a class="btn btn-sm btn-info"href="{% url  'updateevent' i.event_id  %}">update</a></th>
+                            <th><a class="btn btn-sm btn-danger"href="{% url  'deleteevent' i.event_id  %}">Delete</a></th>
+                        </tr>
+                        {% endif  %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>  
+        
+        
+        <div class="row">
+            <div class="col-md mx-5 my-5">
+                <div class="card card-body">
+                    <table class="table">
+                        <h3 style="text-align: center; font-style: italic;">Completed Events</h3>
+                        <tr style="background-color: rgb(138, 138, 138);">
+                            <th>Events Id</th>
+                            <th>Organizer</th>
+                            <th>Tag</th>
+                            <th>Event Date Time</th>
+                            <th>Event Purpose</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                       
+                        {% for i in form  %}
+                        {% if i.option1 %}
+                         <tr>
+                            <th>{{i.event_id}}</th>
+                            <th>{{i.organizer}}</th>
+                            <th>{{i.tag}}</th>
+                            <th>{{i.event_date_time}}</th>
+                            <th>{{i.event_purpose}}</th>
+                            <th><a class="btn btn-sm btn-info"href="{% url  'updateevent' i.event_id  %}">update</a></th>
+                            <th><a class="btn btn-sm btn-danger"href="{% url  'deleteevent' i.event_id  %}">Delete</a></th>
+                        </tr>
+                        {% endif  %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>  
+        
+    </body>
+</html>
+
+
+
+
+{% endblock %}

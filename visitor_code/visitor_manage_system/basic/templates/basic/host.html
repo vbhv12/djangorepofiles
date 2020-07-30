@@ -1,0 +1,87 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<html>
+    <head>
+        <title>Host Page</title>
+    </head>
+    <body>
+        <!-- <div class="row mx-5 my-5">
+            <div class="col-md mx-3">
+                <div class="card card-body">
+                    <h5>Host:</h5>
+                    <hr>
+                    <div>
+                        <h6></h6>
+                    </div>
+                </div>
+            </div>
+         -->
+            <!-- <div class="col-md"> -->
+                <!-- <div class="jumbotron">
+                    <h5>Number of hosts currently present:  <span>{{count}}</span></h5>
+                    <h4 style="text-align: center;padding: 10px"></h4>
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createhost' %}">Create host</a>
+                </div> -->
+            <!-- </div>
+        </div> -->
+        <div class="jumbotron" style="width:55%; margin:auto;">
+            <h3>Number of hosts currently present:  <span style="font-size: 33px;">{{count}}</span></h1>
+            <!-- <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> -->
+            <hr class="my-4">
+            <p>To add new host click the button below.</p>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createhost' %}" style="width: 60%; height: 35px; margin: auto; font-weight: 700 ;">Create host</a>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md mx-5 my-5">
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Host Id</th>
+                    <th>Name</th>
+                    <th>Phone no.</th>
+                    <th>Email id</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for i in host %}
+                <tr>
+                    <th><b>{{i.host_id}}</b></th>
+                    <th>{{i.name}}</th>
+                    <th>{{i.Phone_no}}</th>
+                    <th>{{i.email_id}}</th>
+                    <th><a class="btn btn-sm btn-info" href="{%  url 'updatehost' id=i.host_id %}">update</a></th>
+                    <th><a class="btn btn-sm btn-danger" href="{%  url 'deletehost' i.host_id %}">Delete</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+
+{% load static %}
+<html>
+    <head>
+        <title>Host Page</title>
+    </head>
+    <body>
+        <div class="row mx-3 my-5">
+            <div class="col-md mx-5 my-5">
+                <div class="card card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Host Id</th>
+                            <th>Name</th>
+                            <th>Phone no.</th>
+                            <th>Email id</th>
+                            <th>Flat no.</th>
+                            <th>No of people</th>
+                        </tr>
+                        <tr>
+                            <th><b>{{host.host_id}}</b></th>
+                            <th>{{host.name}}</th>
+                            <th>{{host.Phone_no}}</th>
+                            <th>{{host.email_id}}</th>
+                            <th>{{host.flat_no}}</th>
+                            <th>{{host.no_of_people}}</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>  
+    </body>
+</html>
+
+
+
+
+{% endblock %}

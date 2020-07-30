@@ -1,0 +1,52 @@
+ 
+{% extends 'basic/dashboard.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.profile-pic{
+		max-width: 300px;
+		max-height:300px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+
+<br>
+<div class="row">
+	<div class="col-md-3">
+		<div class="card card-body">
+			<a class="btn btn-warning" href="{% url 'userpage' %}"> &#8592; Back to Profile</a>
+			<hr>
+			<h3 style="text-align: center">Account Settings</h3>
+			<hr>
+			<img class="profile-pic" src="{{request.user.host.host_image.url}}" >
+		
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="card card-body">
+			
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% comment %} {{form.as_p}} {% endcomment %}
+				  <h4>Name :</h4>{{form.name}}
+					<br><br>
+					<h4>Phone No :</h4>{{form.Phone_no}}
+					<br><br>
+					
+					<h4>Flat No :</h4>{{form.flat_no}}
+					<br><br>
+					<h4>No of people :</h4>{{form.no_of_people}}
+					<br><br> 
+					<h4>Image</h4>{{form.host_image}}
+					<br><br> 
+			<input class="btn btn-primary" type="submit" name="Update Information">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

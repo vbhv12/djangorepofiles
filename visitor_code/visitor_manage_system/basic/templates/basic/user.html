@@ -1,0 +1,72 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+
+
+<div class="row mx-5 my-5">
+	<div class="col-md mx-3">
+		<div class="card card-body">
+			<h5>Events:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createevent' %}">Create events</a>
+	
+			<div>
+				<h6></h6>
+			</div>
+		</div>
+	</div>
+
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md mx-5 my-5">
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Events Id</th>
+                    <th>organizer</th>
+                    <th>tag</th>
+                    <th>event_date_time</th>
+                    <th>event_purpose</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+               
+                {% for i in form  %}
+                 <tr>
+                    <th>{{i.event_id}}</th>
+                    <th>{{i.organizer}}</th>
+                    <th>{{i.tag}}</th>
+                    <th>{{i.event_date_time}}</th>
+                    <th>{{i.event_purpose}}</th>
+                    <th><a class="btn btn-sm btn-info"href="{% url  'updateevent' i.event_id  %}">update</a></th>
+                    <th><a class="btn btn-sm btn-danger"href="{% url  'deleteevent' i.event_id  %}">Delete</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>  
+
+
+{% endblock %} 

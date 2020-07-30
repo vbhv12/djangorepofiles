@@ -1,0 +1,67 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+    
+
+{% load static %}
+
+
+
+
+<div class="row mx-5 my-5">
+	<div class="col-md mx-3">
+		<div class="card card-body">
+			<h5>Visitor:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'createvisitor' %}">Create visitor</a>
+			<!--  -->
+			<div>
+				<h6></h6>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md mx-5 my-5">
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone no.</th>
+                    <th>Email id</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {%  for i in visitor %}
+                <tr>
+                    <th><b>{{i.name}}</b></th>
+                    <th>{{i.Phone_no}}</th>
+                    <th>{{i.email_id}}</th>
+                    <th><a class="btn btn-sm btn-info" href="{% url 'updatevisitor' i.visitor_id %}">update</a></th>
+                    <th><a class="btn btn-sm btn-danger" href="{%  url 'deletevisitor' i.visitor_id %}">Delete</a></th>
+                
+                </tr>
+                {%  endfor  %}
+            </table>
+        </div>
+    </div>
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

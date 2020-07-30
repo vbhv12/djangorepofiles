@@ -1,0 +1,24 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+{% load static %}
+ <div class="container">
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+</div> 
+
+<form action="" method="POST">
+    {%  csrf_token %}
+    <div class="col mx-5 my-5" >
+        <h4>Event Orgainzed by :</h4>{{form.event_info}}
+        <br><br>
+        <h4>Visitor info :</h4>{{form.event_visitor_info}}
+        <br><br>
+        <input type="submit" name="Submit"> 
+    </div>
+    
+</form>
+
+
+{% endblock %}

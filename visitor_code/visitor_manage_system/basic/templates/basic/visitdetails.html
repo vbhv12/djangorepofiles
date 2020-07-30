@@ -1,0 +1,71 @@
+{% extends 'basic/dashboard.html' %}
+
+{% block content %}
+    
+<!-- {% load static %} -->
+
+
+
+
+<div class="row mx-5 my-5">
+    <div class="col-md mx-5 my-5">
+        <div class="card card-body">
+            <div class="row">
+
+                <div class=" col md-5">
+                    <a href="{% url 'visitor' %}"> New visitor</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md">
+		<div class="card card-body">
+			<h5>No of visitor's today</h5>
+			<hr>
+            <h4 style="text-align: center;padding: 10px">{{count}}</h4>
+           <br>
+		</div>
+    </div>
+    
+</div>
+
+
+  
+    <div class="row mx-5">
+        <div class="col mx-5 my-6">
+            <div class="card card-body">
+                <div class="row">
+                    <form action="" method="POST">
+                        <div class="col mx-5 my-5" >
+
+                        {%  csrf_token %}
+                            <!-- {{form}} -->
+                            <h4>Duration :</h4>{{form.duration}}
+                            <br><br>
+                            <h4>Purpose :</h4>{{form.purpose}}
+                            <br><br>
+                            <h4>Visitor Details :</h4>{{form.visit_detail}}
+                            <br><br>
+                            <h4>Flat No :</h4>{{form.flat_no}}
+                            <br><br>
+                            <input type="submit" name="Submit"> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+ 
+
+
+
+
+
+
+
+
+
+{% endblock %}
